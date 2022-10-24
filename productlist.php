@@ -1,0 +1,15 @@
+<?php  include('conn.php'); $sql= "SELECT * FROM product";$result = mysqli_query($con,$sql);?> <!doctype html><html lang="en">  <head>    <!-- Required meta tags -->    <meta charset="utf-8">    <meta name="viewport" content="width=device-width, initial-scale=1">    <!-- Bootstrap CSS -->    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">    <title>Adminconsole</title>  </head>  <body><?php
+if(!empty ($_SESSION['alert'])){
+  ?>
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+  <strong>Rabbitshop!</strong> <?php echo $_SESSION['alert'];?>
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+
+<?php 
+unset($_SESSION['alert']);
+}?>
+<h1>รายการสินค้า</h1>
+<a href='adminconsole.php?p=add'><button class="btn btn-danger">➕เพิ่มสินค้า</button></a><br><br>
+<div class="table-responsive-md">
+<table class="table "><tr class="table table-danger"><th scope="col">ชื่อสินค้า</th><th cope="col">ราคา</th><th cope="col">ประเภท</th><th cope="col">จำนวนในคลัง</th><th cope="col">รายละเอียด</th cope="col"><th cope="col">ขึ้นหน้าหลัก</th><th cope="col">img1(ปก)</th><th cope="col">img2</th ><th cope="col" >img3</th><th cope="col">img4</th><th cope="col">ตัวเลือก</th><th cope="col">แก้ไข</th></tr><?php while($row =mysqli_fetch_assoc($result)) : ?><tr><td><?php echo $row['name']; ?></td><td><?php echo $row['price']; ?></td><td><?php echo $row['type']; ?></td><td><?php echo $row['no']; ?></td><td><?php echo $row['detail']; ?></td><td><?php echo $row['pro']; ?></td><td><?php echo $row['img1']; ?></td><td><?php echo $row['img2']; ?></td><td><?php echo $row['img3']; ?></td><td><?php echo $row['img4']; ?></td><td><a href="delpro.php?id=<?php echo $row['id']; ?>"><button class="btn btn-danger">ลบ</button></a></td><td><a href='adminconsole.php?p=edit&id=<?php echo $row["id"]; ?>'><button class="btn btn-primary">แก้ไข</button></a></td></tr><?php endwhile; ?></table></div><!-- Optional JavaScript; choose one of the two! -->    <!-- Option 1: Bootstrap Bundle with Popper -->    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    <!-- Option 2: Separate Popper and Bootstrap JS -->    <!--    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>    -->  </body></html>

@@ -1,0 +1,16 @@
+.sender{
+    text-align: left;
+    margin-left: 30px;
+}
+.custumer{
+    text-align: right;
+    margin-right: 30px;
+}
+h2{
+    display: none;
+}
+#print{
+    display: none;
+}
+@page{margin:0;}
+
