@@ -1,5 +1,5 @@
 <?php
-$host='3306';
+$host='db4free.net';
 $user='panplay_it';
 $password='panplay_it';
 $database='shop_01';
