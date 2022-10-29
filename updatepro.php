@@ -26,7 +26,7 @@ session_start();
     $type3 = strrchr($_FILES['img3']['name'],".");
     $type4 = strrchr($_FILES['img4']['name'],".");
     //echo $type1;
-   if ( $img1 != '') {
+   if ( !empty($img1) ) {
 	$sql = "UPDATE product SET `name`= '$name',`price`='$price',`type`='$type',`detail`='$detail',`no`='$no',`img1`='$img1.$type1',`pro`='$pro' WHERE id = $edit_id ";
  $query = mysqli_query($con,$sql);
   unlink("image/product/".$old_img1);
